@@ -75,7 +75,7 @@
          <a href="sololearn.com/learn/courses/sql-introduction">Introduction to SQL</a>
       </p>
  <div align="left">
-   <h2>SQL Cheat Sheets</h2>
+ <h2>SQL Cheat Sheets</h2>
    <ol>
       <p>
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
