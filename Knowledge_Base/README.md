@@ -49,6 +49,10 @@
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
          <a href="https://senior.ua/articles/rukovodstvo-po-testirovaniyu-baz-dannyh">Руководство по тестированию баз данных</a>
       </p>
+      <p>
+         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
+         <a href="https://www.edureka.co/blog/interview-questions/sql-interview-questions">Top 115 SQL Interview Questions You Must Prepare In 2023</a>
+      </p>
    </ol>
  </div>
  <div align="left">
