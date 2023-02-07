@@ -100,11 +100,7 @@
       </p>
      <p>
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
-         <a href=""></a>
-      </p>
-     <p>
-         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
-         <a href=""></a>
+         <a href="https://github.com/JuliyaVo/SQL/blob/main/Knowledge_Base/joins-cheat-sheet-a4-page-1.png">SQL JOIN Cheat Sheet</a>
       </p>
       </div>
      
