@@ -53,6 +53,10 @@
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
          <a href="https://www.edureka.co/blog/interview-questions/sql-interview-questions">Top 115 SQL Interview Questions You Must Prepare In 2023</a>
       </p>
+      <p>
+         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
+         <a href="https://intellipaat.com/blog/tutorial/sql-tutorial/">SQL Tutorial for Beginners</a>
+      </p>
    </ol>
  </div>
  <div align="left">
@@ -78,12 +82,21 @@
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
          <a href="sololearn.com/learn/courses/sql-introduction">Introduction to SQL</a>
       </p>
+      
  <div align="left">
  <h2>SQL Cheat Sheets</h2>
    <ol>
       <p>
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
-         <a href=""></a>
+         <a href="https://github.com/JuliyaVo/SQL/blob/main/Knowledge_Base/sql-basics-cheat-sheet-a4-page-1.png">SQL Basic Cheat Sheat_1</a>
+      </p>
+     <p>
+         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
+         <a href="https://github.com/JuliyaVo/SQL/blob/main/Knowledge_Base/sql-basics-cheat-sheet-a4-page-2.png">SQL Basic Cheat Sheat_2</a>
+      </p>
+     <p>
+         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
+         <a href="https://learnsql.com/blog/standard-sql-functions-cheat-sheet/">Standard SQL Functions Cheat Sheet</a>
       </p>
      <p>
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
@@ -93,12 +106,5 @@
          <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
          <a href=""></a>
       </p>
-     <p>
-         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
-         <a href=""></a>
-      </p>
-     <p>
-         <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>
-         <a href=""></a>
-      </p>
+      </div>
      
