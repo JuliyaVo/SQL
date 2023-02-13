@@ -167,17 +167,207 @@ GROUP BY author
 HAVING Стоимость >= 5000
 ORDER BY Стоимость desc;</pre>
   </div>
-  <h5></h5>
-    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание.</p>
- <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
-  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
-    <pre>SELECT author, MIN(price) as Минимальная_цена, MAX(price) as Максимальная_цена, AVG(price) as Средняя_цена
-FROM book
-GROUP BY author;</pre>
-  </div>
   <div align=left>
   <h3>1.4 Вложенные запросы</h3>
   <h5>Вложенный запрос, возвращающий одно значение</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Вывести информацию (автора, название и цену) о  книгах, цены которых меньше или равны средней цене книг на складе. Информацию вывести в отсортированном по убыванию цены виде. Среднее вычислить как среднее по цене книги.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>SELECT author, title, price
+FROM book
+WHERE price <= (
+  SELECT AVG(price)
+  FROM book)
+ORDER BY price desc;;</pre>
+  </div>
+  <h5>Использование вложенного запроса в выражении</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Вывести информацию (автора, название и цену) о тех книгах, цены которых превышают минимальную цену книги на складе не более чем на 150 рублей в отсортированном по возрастанию цены виде.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>SELECT author, title, price
+FROM book
+WHERE price <=(
+  SELECT MIN(price) + 150
+  FROM book)
+ORDER BY price;</pre>
+  </div>
+  <h5>Вложенный запрос, оператор IN</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Вывести информацию (автора, книгу и количество) о тех книгах, количество экземпляров которых в таблице book не дублируется.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>SELECT author, title, amount
+FROM book
+WHERE amount IN (
+  SELECT amount
+  FROM book
+  GROUP BY amount
+  HAVING COUNT(title)=1);</pre>
+  </div>
+  <h5>Вложенный запрос, операторы ANY и ALL</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Вывести информацию о книгах(автор, название, цена), цена которых меньше самой большой из минимальных цен, вычисленных для каждого автора.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>SELECT author, title, price
+FROM book
+WHERE price < ANY(
+  SELECT MIN(price)
+  FROM book
+  GROUP BY author);</pre>
+  </div>
+  <h5>Вложенный запрос после SELECT</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Посчитать сколько и каких экземпляров книг нужно заказать поставщикам, чтобы на складе стало одинаковое количество экземпляров каждой книги, равное значению самого большего количества экземпляров одной книги на складе. Вывести название книги, ее автора, текущее количество экземпляров на складе и количество заказываемых экземпляров книг. Последнему столбцу присвоить имя Заказ. В результат не включать книги, которые заказывать не нужно.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>SELECT title, author, amount,
+((
+  SELECT MAX(amount) 
+  FROM book)) - amount as Заказ
+FROM book
+WHERE amount < ANY(SLECT AVG(amount)
+FROM book
+GROUP BY author);</pre>
+  </div>
+  <div align=left>
+  <h3>1.5 Запросы корректировки данных</h3>
+  <h5>Создание пустой таблицы</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание.Создать таблицу поставка (supply), которая имеет ту же структуру, что и таблиц book.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>CREATE TABLE supply (
+  supply_id int PRIMARY KEY
+                AUTO_INCREMENT,
+  title varchar(50),
+  author varchar(30),
+  price decimal(8,2),
+  amount int;</pre>
+  </div>
+  <h5>Добавление записей в таблицу</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Занесите в таблицу supply четыре записи, чтобы получилась следующая таблица:</p>
+    <table border="1" style="background-color: #a9a9a9; background: #a9a9a9; text-align: center;">
+    <thead>
+    <tr>
+    <td><strong>supply_id</strong></td>
+    <td><strong>title</strong></td>
+    <td><strong>author</strong></td>
+    <td><strong>price</strong></td>
+    <td><strong>amount</strong></td>
+    </tr>
+    <tbody>
+    <tr>
+    <td>1</td>
+    <td>Лирика</td>
+    <td>Пастернак Б.Л.</td>
+    <td>518.99</td>
+    <td>2</td>
+    </tr>
+    <tr>
+    <td>2</td>
+    <td>Черный человек</td>
+    <td>Есенин С.А.</td>
+    <td>570.20</td>
+    <td>6</td>
+    </tr>
+    <tr>
+    <td>3</td>
+    <td>Белая гвардия</td>
+    <td>Булгаков М.А.</td>
+    <td>540.50</td>
+    <td>7</td>
+    </tr>
+    <tr>
+    <td>4</td>
+    <td>Идиот</td>
+    <td>Достоевский Ф.М.</td>
+    <td>360.80</td>
+    <td>3</td>
+    </tr>
+    </tbody>
+    </table>  
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>INSERT INTO supply (title, author, price, amount)
+VALUES 
+('Лирика', 'Пастернак Б.Л.', 518.99, 2),
+('Черный человек', 	'Есенин С.А.', 570.20,	6),
+('Белая гвардия',	'Булгаков М.А.',	540.50	, 7),
+('Идиот', 'Достоевский Ф.М.', 360.80,	3);</pre>
+  </div>
+   <h5>Добавление записей из другой таблицы</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Добавить из таблицы supply в таблицу book, все книги, кроме книг, написанных Булгаковым М.А. и Достоевским Ф.М.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>INSERT INTO book (title, author, price, amount)
+SELECT title, author, price, amount
+FROM supply
+WHERE author NOT IN ('Булгаков М.А.', 'Достоевский Ф.М.');</pre>
+  </div>
+  <h5>Добавление записей, вложенные запросы</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Занести из таблицы supply в таблицу book только те книги, авторов которых нет в  book.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>INSERT INTO book (title, author, price, amount)
+SELECT title, author, price, amount
+FROM supply
+WHERE author NOT IN (
+SELECT author
+FROM book);</pre>
+  </div>
+  <h5>Запросы на обновление</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Уменьшить на 10% цену тех книг в таблице book, количество которых принадлежит интервалу от 5 до 10, включая границы.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>UPDATE book
+SET price = 0.9 * price
+WHERE amount BETWEEN 5 AND 10;</pre>
+  </div>
+  <h5>Запросы на обновление нескольких столбцов</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. В таблице book необходимо скорректировать значение для покупателя в столбце buy таким образом, чтобы оно не превышало количество экземпляров книг, указанных в столбце amount. А цену тех книг, которые покупатель не заказывал, снизить на 10%.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>UPDATE book
+SET buy = IF(buy>=amount, amount, buy),
+price = IF(buy=0, price*0.9, price);
+SELECT * FROM book;</pre>
+  </div>
+  <h5>Запросы на обновление нескольких таблиц </h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Для тех книг в таблице book , которые есть в таблице supply, не только увеличить их количество в таблице book ( увеличить их количество на значение столбца amountтаблицы supply), но и пересчитать их цену (для каждой книги найти сумму цен из таблиц book и supply и разделить на 2).</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>UPDATE book, supply
+SET book.amount = book.amount + supply.amount,
+book.price = (book.price + supply.price) / 2
+WHERE book.title = supply.title and book. author = supply.author;
+SELECT * FROM book;</pre>
+  </div>
+  <h5>Запросы на удаление</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Удалить из таблицы supply книги тех авторов, общее количество экземпляров книг которых в таблице book превышает 10.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>DELETE FROM supply
+WHERE author IN(
+  SELECT author
+  FROM book
+  GROUP BY author
+  HAVING SUM(amount) > 10);
+SELECT * FROM supply;</pre>
+  </div>
+  <h5>Запросы на создание таблицы</h5>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Создать таблицу заказ (ordering), куда включить авторов и названия тех книг, количество экземпляров которых в таблице book меньше среднего количества экземпляров книг в таблице book. В таблицу включить столбец   amount, в котором для всех книг указать одинаковое значение - среднее количество экземпляров книг в таблице book.</p>
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
+    <pre>CREATE TABLE ordering AS
+SELECT author, title,
+(SELECT ROUND(AVG(amount))
+FROM book) AS amount
+FROM book
+WHERE amount < (SELECT AVG(amount) FROM book);
+SELECT * FROM ordering;</pre>
+  </div>
+  
+  
+  
+  
+  
   
   
   
@@ -189,15 +379,7 @@ GROUP BY author;</pre>
  
     
     
-    <h5></h5>
-    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание.</p>
- <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
-  <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
-    <pre>SELECT author, MIN(price) as Минимальная_цена, MAX(price) as Максимальная_цена, AVG(price) as Средняя_цена
-FROM book
-GROUP BY author;</pre>
-  </div>
-  
+    
   
 
          
