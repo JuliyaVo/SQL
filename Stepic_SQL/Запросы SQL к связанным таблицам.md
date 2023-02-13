@@ -61,6 +61,7 @@ WHERE book.title IS NULL;</pre>
   </div>
 <h5>Перекрестное соединение CROSS JOIN</h5>
     <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Есть список городов, хранящийся в таблице city. Необходимо в каждом городе провести выставку книг каждого автора в течение 2020 года. Дату проведения выставки выбрать случайным образом. Создать запрос, который выведет город, автора и дату проведения выставки. Последний столбец назвать Дата. Информацию вывести, отсортировав сначала в алфавитном порядке по названиям городов, а потом по убыванию дат проведения выставок.</p>
+     <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
     <pre>SELECT name_city, name_author, (DATE_ADD('2020-01-01', INTERVAL FLOOR(RAND() * 365) DAY)) as Дата
 FROM  city CROSS JOIN author
