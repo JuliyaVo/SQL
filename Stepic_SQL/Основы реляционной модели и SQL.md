@@ -40,7 +40,7 @@
    <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
     <pre>SELECT title, amount, amount * 1.65 as pack
-         FROM book;
+    FROM book;
 </pre>
   </div>
   <h5>Выборка данных, вычисляемые столбцы, математические функции</h5>
@@ -119,13 +119,12 @@
   <p>
     <img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Вывести название и автора тех книг, название которых состоит из двух и более слов, а инициалы автора содержат букву «С». Считать, что в названии слова отделяются друг от друга пробелами и не содержат знаков препинания, между фамилией автора и инициалами обязателен пробел, инициалы записываются без пробела в формате: буква, точка, буква, точка. Информацию отсортировать по названию книги в алфавитном порядке.
   </p>
- <p>
-   <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
+ <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
     <pre>SELECT title, author
-    <p>FROM book</p>
-    <p>WHERE title like '_% _%' and (author like '%С.%')</p>
-    <p>ORDER BY title;</p>
+    FROM book
+    WHERE title like '_% _%' and (author like '%С.%')
+    ORDER BY title;
     </pre>
   </div>
   
