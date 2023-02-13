@@ -124,8 +124,7 @@
     <pre>SELECT title, author
     FROM book
     WHERE title like '_% _%' and (author like '%С.%')
-    ORDER BY title;
-    </pre>
+    ORDER BY title;</pre>
   </div>
   
   
@@ -138,7 +137,7 @@
   
   
   
-          <h5></h5>
+         
   <p>
     <img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. 
   </p>
