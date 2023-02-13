@@ -122,9 +122,9 @@
  <p><img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
     <pre>SELECT title, author
-    FROM book
-    WHERE title like '_% _%' and (author like '%С.%')
-    ORDER BY title;</pre>
+ FROM book
+ WHERE title like '_% _%' and (author like '%С.%')
+ ORDER BY title;</pre>
   </div>
   
   
