@@ -40,7 +40,7 @@
    <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
     <pre>SELECT title, amount, amount * 1.65 as pack
-<p>FROM book;</p>
+         FROM book;
 </pre>
   </div>
   <h5>Выборка данных, вычисляемые столбцы, математические функции</h5>
