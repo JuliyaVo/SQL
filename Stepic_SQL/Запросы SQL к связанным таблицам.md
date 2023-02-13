@@ -60,14 +60,11 @@ ON genre.genre_id = book.genre_id
 WHERE book.title IS NULL;</pre>
   </div>
 <h5>Перекрестное соединение CROSS JOIN</h5>
-    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Вывести информацию о книгах (жанр, книга, автор), относящихся к жанру, включающему слово «роман» в отсортированном по названиям книг виде.</p>
+    <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Есть список городов, хранящийся в таблице city. Необходимо в каждом городе провести выставку книг каждого автора в течение 2020 года. Дату проведения выставки выбрать случайным образом. Создать запрос, который выведет город, автора и дату проведения выставки. Последний столбец назвать Дата. Информацию вывести, отсортировав сначала в алфавитном порядке по названиям городов, а потом по убыванию дат проведения выставок.</p>
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
-    <pre>SELECT name_genre, title, name_author
-FROM author 
-INNER JOIN book ON author.author_id = book.author_id
-INNER JOIN genre ON genre.genre_id = book.genre_id
-WHERE name_genre IN ('Роман')
-ORDER BY title;</pre>
+    <pre>SELECT name_city, name_author, (DATE_ADD('2020-01-01', INTERVAL FLOOR(RAND() * 365) DAY)) as Дата
+FROM  city CROSS JOIN author
+ORDER BY name_city, Дата DESC;</pre>
   </div>
     <h5>Запросы для нескольких таблиц с группировкой</h5>
     <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Посчитать количество экземпляров  книг каждого автора из таблицы author.  Вывести тех авторов,  количество книг которых меньше 10, в отсортированном по возрастанию количества виде. Последний столбец назвать Количество.</p>
