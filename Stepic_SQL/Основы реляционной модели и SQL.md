@@ -243,7 +243,7 @@ GROUP BY author);</pre>
   </div>
   <h5>Добавление записей в таблицу</h5>
     <p><img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Занесите в таблицу supply четыре записи, чтобы получилась следующая таблица:</p>
-    <table border="1" style="background-color: #a9a9a9; background: #a9a9a9; text-align: center;">
+    <table border="1" text-align="center">
     <thead>
     <tr>
     <td><strong>supply_id</strong></td>
