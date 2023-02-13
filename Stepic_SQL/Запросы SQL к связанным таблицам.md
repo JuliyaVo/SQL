@@ -38,11 +38,6 @@
 FOREIGN KEY (author_id) REFERENCES author (author_id) ON DELETE CASCADE,
 FOREIGN KEY (genre_id) REFERENCES genre (genre_id) ON DELETE SET NULL );</pre>
   </div>
-  <h5>Выборка новых столбцов и присвоение им новых имен</h5>
-  <p>
-    <img src="https://cdn-icons-png.flaticon.com/512/3524/3524335.png" width=20 heigh=20>Задание. Выбрать названия книг и авторов из таблицы book, для поля title задать имя(псевдоним) <b>Название</b>, для поля author –  <b>Автор</b>. 
-  </p>
-  </div>
    <div align=left>
   <h3>2.2. Запросы на выборку, соединение таблиц</h3>
   <h5>Соединение INNER JOIN</h5>
