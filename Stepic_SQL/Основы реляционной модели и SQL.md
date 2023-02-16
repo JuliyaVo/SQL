@@ -19,7 +19,7 @@
   <p>
    <img src="https://cdn-icons-png.flaticon.com/128/556/556690.png" width=10 heigh=10>Решение</p> 
   <div class="highlight highlight-source-sql notranslate position-relative overflow-auto" dir=auto>
-    <pre>SELECT author, title, price FROM book;;</pre>
+    <pre>SELECT author, title, price FROM book;</pre>
   </div>
  <h5>Выборка новых столбцов и присвоение им новых имен</h5>
   <p>
